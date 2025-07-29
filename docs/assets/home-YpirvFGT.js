@@ -1,0 +1,1 @@
+import{w as t,p as e}from"./chunk-C37GKA54-BMHwpGcR.js";function r({}){return[{title:"New React Router App"},{name:"description",content:"Welcome to React Router!"}]}const s=t(function(){return e.jsx(e.Fragment,{children:e.jsx("div",{className:"body-back w-full h-screen"})})});export{s as default,r as meta};

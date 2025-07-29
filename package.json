@@ -6,7 +6,15 @@
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "preview": "vite preview",
+    "nj": "touch ./docs/.nojekyll && touch ./.nojekyll",
+    "hack-404": "cp ./docs/index.html ./docs/404.html",
+    "unnest": "mv ./build/client/portfolio/* ./build/client && rm -rf ./build/client/portfolio",
+    "build-clean": "rm -rf ./build && rm -rf ./docs",
+    "build-cp": "cp -r ./build/client ./docs",
+    "prepublish-prerender": "npm run build-clean && npm run build && npm run unnest && npm run build-cp && npm run nj  && npm run hack-404",
+    "prepublish-no-prerender": "npm run build-clean && npm run build && npm run build-cp && npm run nj && npm run hack-404"
   },
   "dependencies": {
     "@react-router/node": "^7.7.1",

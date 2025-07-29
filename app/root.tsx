@@ -7,6 +7,8 @@ import {
   ScrollRestoration,
 } from "react-router";
 
+import React, { useState } from "react";
+
 import type { Route } from "./+types/root";
 import "./app.css";
 
@@ -32,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="h-screen">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -42,7 +44,59 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+
+  const [nameToggle, setNameToggle] = useState(true);
+  const [language, setLanguage] = useState("Español");
+
+  const toggleName = () => {
+    setNameToggle(!nameToggle);
+  };
+
+  const buttons = [
+    { english: "Overview", spanish: "Vista general" },
+    { english: "Skills", spanish: "Habilidades" },
+    { english: "Projects", spanish: "Proyectos" },
+    { english: "Contact", spanish: "Contacto" },
+  ]
+
+  
+  return (<>
+      <header className="absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
+        <nav className="flex items-center justify-between w-full">
+          <div className="w-40 text-left">
+            <span className="font-bold text-purple-800" onClick={toggleName}>{nameToggle ? "Dithir's" : "Alan's"}</span>
+            <span className=" whitespace-nowrap ml-1">Portfolio</span>
+          </div>
+          <div className="justify-center flex w-full">
+            <ul className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 w-70 md:w-140 text-center ">
+              {buttons.map((button) => {
+                const [glow, setGlow] = useState(false);
+                const [hovered, setHovered] = useState(false);
+                return (
+                  <li key={button.english} onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-30 whitespace-nowrap relative">
+                  
+                  {hovered && <div className="h-full w-full absolute inset-0 bg-purple-950 rounded-xl blur-[3px]"></div>}
+                  <button onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} className="relative w-full py-1 h-full rounded-xl bg-linear-160 from-black via-blue-950 to-black overflow-hidden">
+                    {language === "English" ? button.english : button.spanish}
+                    <span
+                      className={`absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r 
+                      from-transparent via-white/15 to-transparent ${glow ? "animate-slideGlow" : ""}`}
+                    ></span>
+                  </button>
+                </li>
+                )
+              })}
+            </ul>
+          </div>
+          <div className="w-40 text-right space-x-2">
+            <span className={`${language === "English" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("English")}>English</span>
+            <span className={`${language === "Español" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("Español")}>Español</span>
+          </div>
+        </nav>
+      </header>
+      <Outlet />
+  </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
