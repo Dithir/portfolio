@@ -22,7 +22,7 @@ export function ButtonItem({ button, language }: { button: { english: string; sp
   
   return (
     <Link to={button.route}>
-      <li onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-25 sm:w-30 whitespace-nowrap relative">
+      <li onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-25 md:w-30 whitespace-nowrap relative">
         {hovered && <div className="h-full w-full absolute inset-0 bg-purple-950 rounded-xl blur-[3px]"></div>}
         <button onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} className="relative w-full py-1 h-full rounded-xl bg-linear-160 from-black via-blue-950 to-black overflow-hidden">
           {language === "English" ? button.english : button.spanish}
@@ -102,9 +102,9 @@ useEffect(() => {
 
   
   return (<>
-      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 fixed w-full h-full bg-black/30 flex items-center justify-center">
+      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 fixed w-full h-full bg-black/40 flex items-center justify-center backdrop-blur-[3px]">
         <div className="w-120 h-40 flex items-center justify-center rounded-xl shadow-lg">
-          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2s_ease-in-out,2s_fade_3.7s_ease-in-out]">W</span>
+          <span className="text-[70px] text-shadow-2xl text-shadow-black text-white font-bold font-serif animate-[slideWelcome_2s_ease-in-out,2s_fade_3.7s_ease-in-out]">W</span>
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.1s_ease-in-out,2.1s_fade_3.6s_ease-in-out]">e</span>
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.2s_ease-in-out,2.2s_fade_3.5s_ease-in-out]">l</span>
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.3s_ease-in-out,2.3s_fade_3.4s_ease-in-out]">c</span>
