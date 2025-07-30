@@ -1,7 +1,7 @@
 import type { Route } from "./+types/skills";
 import SkillCard from "../Components/SkillCard/SkillCard";
 import {expressIcon, javascriptIcon, nodejsIcon, postgreSqlIcon, reactIcon, reactRouterIcon, tailwindIcon, typescriptIcon, angularIcon, mongoIcon, nextjsIcon, mySqlIcon, pythonIcon } from "../Components/SkillCard/svgs";
-import { useLanguage } from "../root";
+import { useLanguage } from "~/Components/LanguageProvider/language-context";
 import { useEffect } from "react";
 
 

@@ -8,27 +8,33 @@ import {
   Link
 } from "react-router";
 
-import React, { useEffect, useState, createContext, useContext } from "react";
+import React, { useEffect, useState } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { route } from "@react-router/dev/routes";
 
-export const LanguageContext = createContext<{ language: string; setLanguage: (lang: string) => void }>({
-  language: "English",
-  setLanguage: () => {},
-});
+import { LanguageProvider, useLanguage } from "~/Components/LanguageProvider/language-context";
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState("English");
+// ButtonItem component to avoid hooks in map
+export function ButtonItem({ button, language }: { button: { english: string; spanish: string; route: string }, language: string }) {
+  const [glow, setGlow] = useState(false);
+  const [hovered, setHovered] = useState(false);
+  
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
-      {children}
-    </LanguageContext.Provider>
+    <Link to={button.route}>
+      <li onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-25 sm:w-30 whitespace-nowrap relative">
+        {hovered && <div className="h-full w-full absolute inset-0 bg-purple-950 rounded-xl blur-[3px]"></div>}
+        <button onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} className="relative w-full py-1 h-full rounded-xl bg-linear-160 from-black via-blue-950 to-black overflow-hidden">
+          {language === "English" ? button.english : button.spanish}
+          <span
+            className={`absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r 
+            from-transparent via-white/15 to-transparent ${glow ? "animate-slideGlow" : ""}`}
+          ></span>
+        </button>
+      </li>
+    </Link>
   );
-};
-
-export const useLanguage = () => useContext(LanguageContext);
+}
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -115,31 +121,17 @@ useEffect(() => {
             <span className=" whitespace-nowrap ml-1">Portfolio</span>
           </div>
           <div className="justify-center flex w-full">
-            <ul className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 w-70 md:w-140 text-center ">
-              {buttons.map((button) => {
-                const [glow, setGlow] = useState(false);
-                const [hovered, setHovered] = useState(false);
+            <ul className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 w-60 md:w-140 text-center ">
+              {buttons.map((button, index) => {
                 return (
-                  <Link to={button.route}>
-                  <li key={button.english} onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-30 whitespace-nowrap relative">
-                  
-                  {hovered && <div className="h-full w-full absolute inset-0 bg-purple-950 rounded-xl blur-[3px]"></div>}
-                  <button onMouseOver={() => setHovered(true)} onMouseOut={() => setHovered(false)} className="relative w-full py-1 h-full rounded-xl bg-linear-160 from-black via-blue-950 to-black overflow-hidden">
-                    {language === "English" ? button.english : button.spanish}
-                    <span
-                      className={`absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r 
-                      from-transparent via-white/15 to-transparent ${glow ? "animate-slideGlow" : ""}`}
-                    ></span>
-                  </button>
-                </li>
-                </Link>
+                  <ButtonItem key={button.english} button={button} language={language} />
                 )
               })}
             </ul>
           </div>
-          <div className="w-40 text-right space-x-2">
-            <span className={`${language === "English" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("English")}>English</span>
-            <span className={`${language === "Español" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("Español")}>Español</span>
+          <div className="w-40 space-x-2 flex flex-col sm:flex-row ">
+            <div className={`${language === "English" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("English")}>English</div>
+            <div className={`${language === "Español" ? "font-bold underline" : ""}`} onClick={()=>setLanguage("Español")}>Español</div>
           </div>
         </nav>
       </header>
