@@ -5,12 +5,30 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link
 } from "react-router";
 
-import React, { useState } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { route } from "@react-router/dev/routes";
+
+export const LanguageContext = createContext<{ language: string; setLanguage: (lang: string) => void }>({
+  language: "English",
+  setLanguage: () => {},
+});
+
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState("English");
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+export const useLanguage = () => useContext(LanguageContext);
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,9 +51,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
+
       </head>
       <body className="h-screen">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -44,24 +65,50 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const { language, setLanguage } = useLanguage();
 
   const [nameToggle, setNameToggle] = useState(true);
-  const [language, setLanguage] = useState("Español");
+  const [onStart, setOnStart] = useState(true);
+
+
 
   const toggleName = () => {
     setNameToggle(!nameToggle);
   };
+  
+
+
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setOnStart(false);
+  }, 5300);
+  return () => clearTimeout(timer);
+}, []);
+
+
 
   const buttons = [
-    { english: "Overview", spanish: "Vista general" },
-    { english: "Skills", spanish: "Habilidades" },
-    { english: "Projects", spanish: "Proyectos" },
-    { english: "Contact", spanish: "Contacto" },
+    { english: "Overview", spanish: "Vista general", route: "/" },
+    { english: "Skills", spanish: "Habilidades", route: "/skills" },
+    { english: "Projects", spanish: "Proyectos", route: "/projects" },
+    { english: "Contact", spanish: "Contacto", route: "/contact" },
   ]
 
   
   return (<>
-      <header className="absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
+      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 absolute w-full h-full bg-black/30 flex items-center justify-center">
+        <div className="w-120 h-40 flex items-center justify-center rounded-xl shadow-lg">
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2s_ease-in-out,2s_fade_3.7s_ease-in-out]">W</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.1s_ease-in-out,2.1s_fade_3.6s_ease-in-out]">e</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.2s_ease-in-out,2.2s_fade_3.5s_ease-in-out]">l</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.3s_ease-in-out,2.3s_fade_3.4s_ease-in-out]">c</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.4s_ease-in-out,2.4s_fade_3.3s_ease-in-out]">o</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.5s_ease-in-out,2.5s_fade_3.2s_ease-in-out]">m</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.6s_ease-in-out,2.6s_fade_3.1s_ease-in-out]">e</span>
+          <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.7s_ease-in-out,2.7s_fade_3s_ease-in-out]">!</span>
+        </div>
+      </div>)}
+      <header className="z-0 absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
         <nav className="flex items-center justify-between w-full">
           <div className="w-40 text-left">
             <span className="font-bold text-purple-800" onClick={toggleName}>{nameToggle ? "Dithir's" : "Alan's"}</span>
@@ -73,6 +120,7 @@ export default function App() {
                 const [glow, setGlow] = useState(false);
                 const [hovered, setHovered] = useState(false);
                 return (
+                  <Link to={button.route}>
                   <li key={button.english} onMouseOver={() => setGlow(true)} onMouseOut={() => setGlow(false)} className="w-30 whitespace-nowrap relative">
                   
                   {hovered && <div className="h-full w-full absolute inset-0 bg-purple-950 rounded-xl blur-[3px]"></div>}
@@ -84,6 +132,7 @@ export default function App() {
                     ></span>
                   </button>
                 </li>
+                </Link>
                 )
               })}
             </ul>
@@ -94,7 +143,8 @@ export default function App() {
           </div>
         </nav>
       </header>
-      <Outlet />
+      
+        <Outlet />
   </>
   );
 }

@@ -15,6 +15,15 @@
     0%{transform: translateX(0%) translateY(0%);}
     100%{transform: translateX(200%) translateY(-200%);}
 }
+  @keyframes slideWelcome {
+    0%{transform: translateY(-500%);}
+    90%{transform: translateY(10%);
+    100%{transform: translateY(0%);}}
+  }
+  @keyframes fade {
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+  }
 }
 
 

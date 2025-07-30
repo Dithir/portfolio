@@ -1,4 +1,4 @@
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/projects";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -7,11 +7,11 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
+export default function Projects() {
   return (
     <>
       <div className="body-back w-full h-screen flex items-center justify-center">
-        <h1 className="text-5xl font-bold text-white">Welcome to the Home Page</h1>
+        <h1 className="text-5xl font-bold text-white">Welcome to the Projects Page</h1>
       </div>
     </>
   )
