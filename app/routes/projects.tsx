@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Projects() {
   return (
     <>
-      <div className="body-back w-full h-screen flex items-center justify-center">
+      <div className="w-full h-screen flex items-center justify-center">
         <h1 className="text-5xl font-bold text-white">Welcome to the Projects Page</h1>
       </div>
     </>

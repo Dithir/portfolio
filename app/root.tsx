@@ -53,7 +53,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
 
       </head>
-      <body className="h-screen">
+      <body >
         <LanguageProvider>
           {children}
         </LanguageProvider>
@@ -96,7 +96,7 @@ useEffect(() => {
 
   
   return (<>
-      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 absolute w-full h-full bg-black/30 flex items-center justify-center">
+      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 fixed w-full h-full bg-black/30 flex items-center justify-center">
         <div className="w-120 h-40 flex items-center justify-center rounded-xl shadow-lg">
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2s_ease-in-out,2s_fade_3.7s_ease-in-out]">W</span>
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.1s_ease-in-out,2.1s_fade_3.6s_ease-in-out]">e</span>
