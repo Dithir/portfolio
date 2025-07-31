@@ -22,22 +22,34 @@ export default function Projects() {
       engDescription: "First project i made and still currently working on to learn API data extraction and a few other things.",
       spaDescription: "Primer proyecto que hice y sigo trabajando para aprender extracción de datos de API y algunas otras cosas.",
       image: "/portfolio/projectsImages/PokeApi.png",
-      url: "https://dithir.github.io/my-react-router-app"
+      url: "https://dithir.github.io/my-react-router-app",
+      status: ["In Progress", "En Progreso"],
+
     },
     {
-      engTitle: "Project 2",
-      spaTitle: "Proyecto 2",
-      engDescription: "This is the second project.",
-      spaDescription: "Este es el segundo proyecto.",
-      image: "https://placehold.co/600x600",
+      engTitle: "Webpage Miranda Mussas",
+      spaTitle: "Webpage Miranda Mussas",
+      engDescription: "This is a project for an eccomerce website, will eventually be used on a family business.",
+      spaDescription: "Este es un proyecto para un sitio web de compras, que eventualmente se utilizará en un negocio familiar.",
+      image: "/portfolio/projectsImages/miranda-mussas.png",
+      url: "https://dithir.github.io/miranda-mussas/",
+      status: ["In Progress", "En Progreso"],
     },
-    // Add more projects as needed
+    {
+      engTitle: "Portfolio",
+      spaTitle: "Portafolio",
+      engDescription: "This is the current portfolio you are viewing, showcasing my projects and skills.",
+      spaDescription: "Este es el portafolio actual que estás viendo, mostrando mis proyectos y habilidades.",
+      image: "/portfolio/projectsImages/portfolio.png",
+      url: "https://dithir.github.io/portfolio/",
+      status: ["In Progress", "En Progreso"],
+    },
   ];
 
   return (
     <>
-      <div className="z-0 relative w-full h-screen flex items-center flex-col gap-2 pt-35 sm:pt-25">
-        <ul className="absolute w-full max-w-4xl flex flex-col items-center justify-center gap-0 sm:gap-10 py-10">
+      <div className="z-0 relative h-full w-full flex items-center flex-col gap-2 pt-35 sm:pt-25">
+        <ul className="relative w-full max-w-4xl flex flex-col items-center justify-center gap-0 sm:gap-10 py-10 mb-10">
           <div className="absolute top-0 h-full w-5 flex flex-col items-center">
             <div className="w-4 h-4 rounded-full bg-gray-500/30"></div>
             <div className="w-1 h-full bg-gray-500/30"></div>
@@ -54,6 +66,7 @@ export default function Projects() {
                 </li>
             )
           })}
+          
         </ul>
         
       </div>

@@ -63,3 +63,9 @@ body{
     background-size: 100% 100%;
     background-repeat: repeat; 
   }
+
+  @keyframes pulsatingBlur{
+    0%{filter:blur(6px)}
+    50%{filter:blur(2px)}
+    100%{filter:blur(6px)}
+  }
