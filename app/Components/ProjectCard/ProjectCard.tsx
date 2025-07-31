@@ -18,17 +18,17 @@ export function ProjectCard({ project }: ProjectCardProps){
     const [hovered, setHovered] = useState(false);
 
     return (
-        <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className="relative w-120 h-40 rounded-xl flex items-center justify-center">
+        <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className="relative  rounded-xl flex-col items-center justify-center">
             {hovered && <div className="absolute w-full h-full rounded-xl bg-emerald-800 flex p-3 blur-xl"></div>}
-            <div className="relative w-full h-full rounded-xl bg-black border-gray-500 border flex p-3">
-                <div className="w-2/5 h-full bg-amber-400 flex items-center justify-center rounded-lg overflow-hidden">
+            <div className="relative rounded-xl bg-black border-gray-500 border flex flex-col sm:flex-row p-3 items-center justify-between gap-3">
+                <div className="w-50 h-35 sm:w-65 sm:h-45 bg-amber-400 flex items-center justify-center rounded-lg overflow-hidden">
                     <img
                       className="w-full h-full object-cover"
                       src={project.image}
                       alt={language === "English" ? project.engTitle : project.spaTitle}
                     />
                 </div>
-                <div className="w-3/5 h-full bg-gray-800 p-2 border-2 border-gray-600 ml-3 rounded-xl text-white">
+                <div className="sm:w-80 sm:h-45 w-50 bg-gray-800 p-2 border-2 border-gray-600 sm:ml-1 rounded-xl text-white">
                     <h2>{language === "English" ? project.engTitle : project.spaTitle}</h2>
                     <hr className="my-1 border-gray-500" />
                     <p className="text-sm">{language === "English" ? project.engDescription : project.spaDescription}</p>
