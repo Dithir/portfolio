@@ -102,7 +102,7 @@ useEffect(() => {
 
   
   return (<>
-      {onStart && (<div onClick={() => setOnStart(false)} className="z-10 fixed w-full h-full bg-black/40 flex items-center justify-center backdrop-blur-[3px]">
+      {onStart && (<div onClick={() => setOnStart(false)} className="z-20 fixed w-full h-full bg-black/40 flex items-center justify-center backdrop-blur-[3px]">
         <div className="w-120 h-40 flex items-center justify-center rounded-xl shadow-lg">
           <span className="text-[70px] text-shadow-2xl text-shadow-black text-white font-bold font-serif animate-[slideWelcome_2s_ease-in-out,2s_fade_3.7s_ease-in-out]">W</span>
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.1s_ease-in-out,2.1s_fade_3.6s_ease-in-out]">e</span>
@@ -114,7 +114,7 @@ useEffect(() => {
           <span className="text-[70px] text-white font-bold font-serif animate-[slideWelcome_2.7s_ease-in-out,2.7s_fade_3s_ease-in-out]">!</span>
         </div>
       </div>)}
-      <header className="z-0 absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
+      <header className="z-10 absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
         <nav className="flex items-center justify-between w-full">
           <div className="w-40 text-left">
             <span className="font-bold text-purple-800" onClick={toggleName}>{nameToggle ? "Dithir's" : "Alan's"}</span>
