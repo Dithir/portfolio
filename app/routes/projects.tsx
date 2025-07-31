@@ -21,7 +21,7 @@ export default function Projects() {
       spaTitle: "Proyecto PokeApi",
       engDescription: "First project i made and still currently working on to learn API data extraction and a few other things.",
       spaDescription: "Primer proyecto que hice y sigo trabajando para aprender extracción de datos de API y algunas otras cosas.",
-      image: "/projectsImages/PokeApi.png",
+      image: "/portfolio/projectsImages/PokeApi.png",
       url: "https://dithir.github.io/my-react-router-app"
     },
     {
