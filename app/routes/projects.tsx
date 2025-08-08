@@ -1,18 +1,21 @@
 import type { Route } from "./+types/projects";
 import { ProjectCard } from "~/Components/ProjectCard/ProjectCard";
 import { useLanguage } from "~/Components/LanguageProvider/language-context";
-import { useState } from "react";
+import { useEffect, useState,  } from "react";
 import ProjectButton from "~/Components/ProjectCard/ProjectButton";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "My projects" },
+    { name: "description", content: "Here you can see my projecs" },
   ];
 }
 
 export default function Projects() {
   const { language } = useLanguage();
+      useEffect(() => {
+        document.title = language === "English" ? "My Projects" : "Mis Proyectos";
+      }, [language]);
 
 
   const projects = [

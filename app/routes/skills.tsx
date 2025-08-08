@@ -7,16 +7,17 @@ import { useEffect } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Skills" },
+    { name: "description", content: "Here you can see what i know" },
   ];
 }
 
 export default function Skills() {
-  const {language} = useLanguage();
-  useEffect(() => {
-    console.log(language);
-  }, [language]);
+  const { language } = useLanguage();
+    useEffect(() => {
+      document.title = language === "English" ? "Skills" : "Habilidades";
+    }, [language]);
+
   return (
     <>
       <div className="w-full flex flex-col items-center pt-37 md:pt-22">
@@ -30,11 +31,12 @@ export default function Skills() {
             <SkillCard image={tailwindIcon(60,"white")} name="Tailwind CSS" />
             <SkillCard image={nodejsIcon(60,"white")} name="Node.js" />
             <SkillCard image={pythonIcon(60,"white")} name="Python" />
+            <SkillCard image={expressIcon(60,"white")} name="Express" />
+            <SkillCard image={postgreSqlIcon(60,"white")} name="PostgreSQL" />
         </div>
         <h1 className="text-3xl font-bold text-white">{language === "Español" ? "Estoy aprendiendo actualmente en:" : "Im currently learning:"}</h1>
         <div className="w-100 sm:w-150 lg:w-170 flex flex-wrap items-center justify-center gap-5 p-4 mt-5 rounded-lg shadow-lg">
-            <SkillCard image={expressIcon(60,"white")} name="Express" />
-            <SkillCard image={postgreSqlIcon(60,"white")} name="PostgreSQL" />
+            <h1 className= "text-3xl text-green-600 mb-5">Im currently improving my skills above!</h1>
         </div>
         <h1 className="text-3xl font-bold text-white">{language === "Español" ? "Estoy dispuesto a aprender:" : "Im willing to learn:"}</h1>
          <div className="w-100 sm:w-150 lg:w-170 flex flex-wrap items-center justify-center gap-5 p-4 mt-5 rounded-lg shadow-lg">

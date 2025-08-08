@@ -69,3 +69,29 @@ body{
     50%{filter:blur(2px)}
     100%{filter:blur(6px)}
   }
+
+  .circle-shape {
+  float: left;
+  shape-outside: circle();
+  width: 100px;
+  height: 100px;
+  background: #1C274C;
+  margin: 0 20px 20px 0;
+  border-radius: 50%; /* This makes it visually a circle */
+}
+
+.speech-bubble {
+  position: relative;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -13px; /* Adjust as needed */
+  right: 400px;   /* Adjust as needed to point to the avatar */
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 13px solid #374151;
+}

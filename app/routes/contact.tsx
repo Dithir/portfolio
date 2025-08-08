@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import type { Route } from "./+types/contact";
+import { useLanguage } from "~/Components/LanguageProvider/language-context";
+
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Contact me" },
+    { name: "description", content: "Get in touch with me!" },
   ];
 }
 
@@ -33,6 +36,12 @@ const linkedinIcon = <svg width="20px" height="20px" viewBox="0 0 24 24" fill="w
 </svg>
 
 export default function Contact() {
+  const { language } = useLanguage();
+    useEffect(() => {
+    document.title = language === "English" ? "Contact Me" : "Contáctame";
+  }, [language]);
+
+
   return (
     <>
       <div className="w-full h-full flex items-center justify-center sm:pt-20 pt-30 flex-col gap-5">
