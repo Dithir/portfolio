@@ -11,10 +11,11 @@
     "nj": "touch ./docs/.nojekyll && touch ./.nojekyll",
     "hack-404": "cp ./docs/index.html ./docs/404.html",
     "unnest": "mv ./build/client/portfolio/* ./build/client && rm -rf ./build/client/portfolio",
+    "cname-copy":"cp ./CNAME ./docs/CNAME",
     "build-clean": "rm -rf ./build && rm -rf ./docs",
     "build-cp": "cp -r ./build/client ./docs",
-    "prepublish-prerender": "npm run build-clean && npm run build && npm run build-cp && npm run nj  && npm run hack-404",
-    "prepublish-no-prerender": "npm run build-clean && npm run build && npm run build-cp && npm run nj && npm run hack-404"
+    "prepublish-prerender": "npm run build-clean && npm run build && npm run build-cp && npm run nj  && npm run hack-404 && npm run cname-copy",
+    "prepublish-no-prerender": "npm run build-clean && npm run build && npm run build-cp && npm run nj && npm run hack-404  && npm run cname-copy"
   },
   "dependencies": {
     "@react-router/node": "^7.7.1",

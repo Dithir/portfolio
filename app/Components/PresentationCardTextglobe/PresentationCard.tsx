@@ -15,14 +15,14 @@ export default function PresentationCard() {
             speed: 30
         },
         {
-            textEnglish: "Second text to show", 
-            textSpanish: "Segundo texto para mostrar",
+            textEnglish: "Second text to show owo nya", 
+            textSpanish: "Segundo texto para mostrar owo nya",
             duration: 3000,
             speed: 30
         },
         {
-            textEnglish: "Third text to show",
-            textSpanish: "Tercer texto para mostrar",
+            textEnglish: "Third text to show :3",
+            textSpanish: "Tercer texto para mostrar :3",
             duration: 3000,
             speed: 30
         },

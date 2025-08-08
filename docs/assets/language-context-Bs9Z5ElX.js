@@ -1,1 +1,0 @@
-import{a as e,p as g}from"./chunk-C37GKA54-i3SjfmY8.js";const a=e.createContext({language:"English",setLanguage:()=>{}}),u=({children:t})=>{const[s,n]=e.useState("English");return g.jsx(a.Provider,{value:{language:s,setLanguage:n},children:t})},r=()=>e.useContext(a);export{u as L,r as u};
