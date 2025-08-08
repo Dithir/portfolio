@@ -1,6 +1,6 @@
 import type { Route } from "./+types/home";
 import  PresentationCard from "../Components/PresentationCardTextglobe/PresentationCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "~/Components/LanguageProvider/language-context";
 
 
@@ -23,11 +23,29 @@ export default function Home() {
       document.title = language === "English" ? "My Portfolio" : "Mi Portafolio";
     }, [language]);
 
+    const [nameToggle, setNameToggle] =  (useState(true));
+
+    useEffect(()=>{
+      const interval = setInterval(() => {
+        setNameToggle(prev => !prev);
+      }, 4000);
+      return () => clearInterval(interval);
+    }, []);
+
     
   return (
     <>
       <div className="flex justify-center items-center w-full h-screen">
-        <PresentationCard />
+        <div className="flex justify-center items-center w-full h-full flex-col sm:flex-row mt-20 sm:mt-0">
+          <div className="h-20 sm:h-40 w-90 text-white flex justify-center">
+            <div className="relative">
+              <span className={`absolute ${nameToggle ? "hidden" : "block"} animate-nameTransition text-5xl left-4 text-purple-800`}>Alan</span>
+              <span className={`absolute ${nameToggle ? "block" : "hidden"} animate-nameTransition text-5xl text-purple-800`}>Dithir</span>
+            </div>
+            <span className="ml-28 text-5xl">'s Portfolio</span>
+          </div>
+          <PresentationCard />
+        </div>
       </div>
     </>
   )

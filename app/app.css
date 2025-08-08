@@ -20,7 +20,18 @@
     0%{opacity: 1;}
     100%{opacity: 0;}
   }
+
+  --animate-nameTransition: nameTransition 4s ease-in-out;
+
+  @keyframes nameTransition {
+    0%{opacity: 0;}
+    20%{opacity: 100%;}
+    80%{opacity: 100%;}
+    100%{opacity: 0;}
+  }
+
 }
+
 
 
 @layer utilities {
@@ -88,7 +99,7 @@ body{
   content: "";
   position: absolute;
   bottom: -13px; /* Adjust as needed */
-  right: 400px;   /* Adjust as needed to point to the avatar */
+  right: 320px;   /* Adjust as needed to point to the avatar */
   width: 0;
   height: 0;
   border-left: 7px solid transparent;
