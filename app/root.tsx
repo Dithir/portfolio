@@ -94,7 +94,7 @@ useEffect(() => {
 
 
   const buttons = [
-    { english: "Overview", spanish: "Vista general", route: "/" },
+    { english: "Overview", spanish: "Inicio", route: "/" },
     { english: "Skills", spanish: "Habilidades", route: "/skills" },
     { english: "Projects", spanish: "Proyectos", route: "/projects" },
     { english: "Contact", spanish: "Contacto", route: "/contact" },
@@ -116,9 +116,9 @@ useEffect(() => {
       </div>)}
       <header className="z-10 absolute flex items-center p-4 bg-gray-800/40 text-white w-full">
         <nav className="flex items-center justify-between w-full">
-          <div className="w-40 text-left">
+          <div className="w-40 text-left flex flex-col sm:flex-row">
             <span className="font-bold text-purple-800" onClick={toggleName}>{nameToggle ? "Dithir's" : "Alan's"}</span>
-            <span className=" whitespace-nowrap ml-1">Portfolio</span>
+            <span className=" whitespace-nowrap sm:ml-1">Portfolio</span>
           </div>
           <div className="justify-center flex w-full">
             <ul className="flex flex-wrap justify-center items-center gap-x-1 gap-y-1 w-60 md:w-140 text-center ">

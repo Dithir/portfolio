@@ -38,7 +38,7 @@ export default function Home() {
       <div className="flex justify-center items-center w-full h-screen">
         <div className="flex justify-center items-center w-full h-full flex-col sm:flex-row mt-20 sm:mt-0">
           <div className="h-20 sm:h-40 w-90 text-white flex justify-center">
-            <div className="relative">
+            <div className="relative ">
               <span className={`absolute ${nameToggle ? "hidden" : "block"} animate-nameTransition text-5xl left-4 text-purple-800`}>Alan</span>
               <span className={`absolute ${nameToggle ? "block" : "hidden"} animate-nameTransition text-5xl text-purple-800`}>Dithir</span>
             </div>

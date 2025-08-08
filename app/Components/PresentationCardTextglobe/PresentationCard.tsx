@@ -59,9 +59,9 @@ export default function PresentationCard() {
                     <span className="text-white text-lg p-4 block"><Typewriter text={language === "English" ? text.textEnglish : text.textSpanish} speed={text.speed} /></span>
                 </div>
             </div>
-            <div className="relative m-1 w-118 h-48 rounded-lg flex justify-end items-center">
+            <div className="relative m-1 w-100 h-48 rounded-lg flex justify-end items-center">
             </div>
-            <div className="relative z-10 m-1 ml-6 w-118 h-18 rounded-lg">
+            <div className="relative z-10 m-1 ml-6 w-100 h-18 rounded-lg">
                 <img className="h-full cursor-pointer" onClick={changeText} src={photo} alt="" />
             </div>
         </div>
