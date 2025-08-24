@@ -55,8 +55,8 @@ export default function Contact() {
         <div className="flex flex-col gap-2">
           <div className="text-white text-xl bg-slate-900 p-2 rounded-xl flex items-center gap-1">
             {mailIcon} Email:{" "}
-            <a className="text-blue-400" href="mailto:agustinbaez94@gmail.com">
-              agustinbaez94@gmail.com
+            <a className="text-blue-400" href="mailto:contact@dithir.dev">
+              contact@dithir.dev
             </a>
           </div>
           <p className="text-white text-xl bg-slate-900 p-2 rounded-xl flex items-center gap-1">
